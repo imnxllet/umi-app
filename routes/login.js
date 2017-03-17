@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var firebase = require('./firebase');
-
+require('./http-proxy.js')('zhenyong.lu:Ytt24241821@192.168.138.60', 8080);
 
 
 /* GET home page. */
