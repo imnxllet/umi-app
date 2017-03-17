@@ -16,6 +16,7 @@
     "firebase-admin": "^4.0.3",
     "firebase": "^3.7.1",
     "firebase-token-generator": "^2.0.0",
-    "connect-session-firebase": "^4.1.0"
+    "connect-session-firebase": "^4.1.0",
+    "global-tunnel": "^1.2.0"
   }
 }
