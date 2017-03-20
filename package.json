@@ -17,6 +17,7 @@
     "firebase": "^3.7.1",
     "firebase-token-generator": "^2.0.0",
     "connect-session-firebase": "^4.1.0",
-    "global-tunnel": "^1.2.0"
+    "global-tunnel": "^1.2.0",
+    "express-session": "^1.15.1"
   }
 }

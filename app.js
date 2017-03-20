@@ -4,16 +4,43 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
-
+var session = require('express-session')
+const FirebaseStore = require('connect-session-firebase')(session);
+const fb = require('firebase-admin');
 /* Routing */
 var index = require('./routes/index');
 var login = require('./routes/login');
 var signup = require('./routes/signup');
 var users = require('./routes/users');
 
+
+
 var app = express();
 
+const ref = fb.initializeApp({
+  credential: fb.credential.cert('./public/firebase-config/serviceAccountKey.json'),
+  databaseURL: 'https://umi-app.firebaseio.com'
+});
+ 
+
+app.use(session({
+    store: new FirebaseStore({
+      database: ref.database()
+    }),
+    secret: 'keyboard cat',
+    resave: true,
+    saveUninitialized: true
+  }));
+/*app.set('trust proxy', 1);
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true },
+  cookieName: 'session',
+  duration: 30 * 60 * 1000,
+  activeDuration: 5 * 60 * 1000
+}));*/
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 //app.set('view engine', 'hbs');
@@ -33,6 +60,7 @@ app.use('/signup', signup);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
+
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;

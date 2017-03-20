@@ -3,10 +3,11 @@ var express = require('express');
 /* Initialize Firebase */
 var firebase = require("firebase");
 var config = {
-  apiKey: "AIzaSyBOsAAfw52Oc0Aw-S-o4GDs_QgfksA87vc",
-  authDomain: "umi-app.firebaseapp.com",
-  databaseURL: "https://umi-app.firebaseio.com",
-  storageBucket: "umi-app.appspot.com"
+    apiKey: "AIzaSyBOsAAfw52Oc0Aw-S-o4GDs_QgfksA87vc",
+    authDomain: "umi-app.firebaseapp.com",
+    databaseURL: "https://umi-app.firebaseio.com",
+    storageBucket: "umi-app.appspot.com",
+    messagingSenderId: "389924789572"
 };
 
 firebase.initializeApp(config);
