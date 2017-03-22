@@ -20,10 +20,14 @@ router.post('/', function(req, res, next) {
 
   if (user) {
     // User is signed in.
-    req.session.user = user;
-    req.session.save();
-   // res.send('user logged in!')
-    res.redirect('/');
+    if(user.emailVerified){
+      req.session.user = user;
+      req.session.save();
+     // res.send('user logged in!')
+      res.redirect('/');
+    }else{
+      res.send("Go verify your email!");
+    }
   } else {
     // No user is signed in.
     res.send('user not logged in!')
